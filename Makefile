@@ -14,7 +14,8 @@ build/libcanokey-virt.a:
 	cmake -S . -B build \
 		-DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) \
 		-DPython3_EXECUTABLE=$(shell command -v $(PYTHON)) \
-		-DPYTHON_EXE=$(shell command -v $(PYTHON))
+		-DPYTHON_EXE=$(shell command -v $(PYTHON)) \
+		$(CMAKE_FLAGS)
 	cmake --build build -j $(shell getconf _NPROCESSORS_ONLN)
 
 lib_install:

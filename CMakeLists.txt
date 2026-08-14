@@ -18,6 +18,20 @@ set(PRODUCT_NAME "CanoKey USB/IP" CACHE STRING "" FORCE)
 
 add_subdirectory(canokey-core EXCLUDE_FROM_ALL)
 
+# canokey-crypto's configure step re-applies its Ed25519 patch to tf-psa-crypto in-source with
+# `patch -N` on every run; on the already-patched tree this leaves *.orig/*.rej rejects behind.
+file(GLOB_RECURSE TF_PSA_CRYPTO_PATCH_REJECTS
+    canokey-core/canokey-crypto/tf-psa-crypto/*.orig
+    canokey-core/canokey-crypto/tf-psa-crypto/*.rej)
+file(REMOVE ${TF_PSA_CRYPTO_PATCH_REJECTS})
+
+# GNU ld cannot resolve GCC's .weak.* pseudo-symbol scheme for PE weak externals across
+# static-archive members. canokey-crypto's weak definitions are never overridden in the
+# virt build, so compile them as strong symbols on Windows.
+if(WIN32)
+    target_compile_definitions(canokey-crypto PRIVATE weak=)
+endif()
+
 add_library(canokey-virt STATIC
     canokey-core/virt-card/device-sim.c
     canokey-core/virt-card/fabrication.c
