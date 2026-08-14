@@ -1,0 +1,10 @@
+/.idea/
+/vendor/
+/build/
+/venv/
+.DS_Store
+/CLAUDE.md
+/.claude/
+/sing-canokey
+/sing-canokey.exe
+/canokey-file
