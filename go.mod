@@ -7,7 +7,7 @@ require (
 	github.com/sagernet/sing-box v1.14.0-beta.14
 	github.com/sagernet/sing-usbip v0.0.0-20260813125128-908a3a2fa917
 	github.com/spf13/cobra v1.10.2
-	google.golang.org/grpc v1.79.1
+	google.golang.org/grpc v1.83.1
 	google.golang.org/protobuf v1.36.11
 )
 
@@ -68,5 +68,5 @@ require (
 	golang.org/x/text v0.40.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.47.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20251202230838-ff82c1b0f217 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect
 )
